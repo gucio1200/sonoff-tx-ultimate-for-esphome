@@ -120,10 +120,6 @@ api:
 
 ota:
  - platform: esphome
-
-wifi:
-  ap:
-    password: "12345678"
     
 improv_serial:
 

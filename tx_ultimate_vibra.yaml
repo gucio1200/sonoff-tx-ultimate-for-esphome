@@ -344,9 +344,9 @@ switch:
     name: "${friendly_name} Restart"
 
 light:
-  - platform: neopixelbus
-    type: GRB
-    variant: WS2811
+  - platform: esp32_rmt_led_strip
+    chipset: WS2811
+    rgb_order: GRB
     pin: ${led_pin}
     num_leds: 28
     name: "NeoPixel Light"

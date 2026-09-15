@@ -27,7 +27,7 @@ substitutions:
 
   long_press_brightness: "1"
   long_press_color: "{100,0,0}"
-  long_press_effect: ""
+  long_press_effect: "none"
 
   multi_touch_brightness: "1"
   multi_touch_color: "{0,0,0}"
@@ -35,11 +35,11 @@ substitutions:
 
   swipe_left_brightness: "1"
   swipe_left_color: "{0,100,0}"
-  swipe_left_effect: ""
+  swipe_left_effect: "none"
 
   swipe_right_brightness: "1"
   swipe_right_color: "{100,0,70}"
-  swipe_right_effect: ""
+  swipe_right_effect: "none"
 
   relay_1_pin: GPIO18
   relay_2_pin: GPIO17
@@ -99,7 +99,7 @@ esphome:
 esp32:
   board: esp32dev
   framework:
-    type: arduino
+    type: esp-idf
 
 logger:
 #  hardware_uart: UART2
@@ -113,7 +113,7 @@ logger:
     uart_debug: INFO
 
 dashboard_import:
-  package_import_url: github://SmartHome-yourself/sonoff-tx-ultimate-for-esphome/tx_ultimate.yaml@main
+  package_import_url: github://SmartHome-yourself/shys-collection/templates/esphome/setups/sonoff-tx-ultimate/tx_ultimate.yaml@main
   import_full_config: false
 
 api:
@@ -224,7 +224,7 @@ binary_sensor:
       - script.execute: refresh_led_default
 
   - platform: template
-    name: "Swipe right"
+    name: "Swipe_right"
     id: swipe_right
     on_press:
       - delay: ${button_on_time}
@@ -442,8 +442,8 @@ speaker:
     dac_type: external
     i2s_dout_pin: ${audio_sdata_pin}
     i2s_audio_id: audio_i2s
-    i2s_comm_fmt: lsb
-    mode: mono
+    i2s_comm_fmt: i2s_lsb
+    channel: mono
 
 uart:
   tx_pin: ${uart_tx_pin}
